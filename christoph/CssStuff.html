@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CSSStuff</title>
+    
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+			font-family:"Helvetica";
+			line-height:140%;
+            background: #333333;
+		}
+		canvas {
+			margin:auto;
+		}
+
+        .background{
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: #000000;
+        }
+        .square {
+            position: absolute;
+            margin-top: 150px;
+            margin-left: 150px;
+            width: 200px;
+            height: 200px;
+            background-color: #ffffff;
+            transition: all 2s ease-in-out;
+        }
+        
+
+        /* keyframes */
+        @keyframes invertColorSquare {
+            0% {
+                background-color: #000000;
+                transform: rotate(0deg);
+                border-radius: 0%;
+            }
+            10%{
+                transform: rotate(0deg);
+            }
+            42%{
+                border-radius: 0%;
+            }
+            80%{
+                transform: rotate(360deg);
+                border-radius: 100%;
+            }
+            100% {
+                background-color: #ffffff;
+                transform: rotate(360deg);
+                border-radius: 100%;
+            }
+        }
+        @keyframes invertColorBackground {
+            0% {
+                background-color: #ffffff;
+            }
+            100% {
+                background-color: #000000;
+            }
+        }
+        @keyframes xAxisBall{
+            50%{
+                transform: translateX(300px);
+                /* animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1); */
+            }
+        }
+        @keyframes yAxisBall{
+            50%{
+                transform: translateY(300px);
+                /* animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64); */
+            }
+        }
+
+        .square{
+            animation: invertColorSquare 2s cubic-bezier(1,.22,.01,.76) infinite alternate;
+        }
+        .background{
+            animation: invertColorBackground 2s cubic-bezier(.97,-0.7,.02,1.54) infinite alternate;
+        }
+
+         .ball{
+            position: absolute;
+            margin-top: 79px;
+            margin-left: 79px;
+            mix-blend-mode: difference;            
+            animation: xAxisBall 3.5s infinite ease-in-out ;
+        }
+        .ball::after{
+            content: '';
+            display: block;
+            width: 42px;
+            height: 42px;
+            border-radius: 100%;
+            background-color: #0000ff;
+            animation: yAxisBall 3.8s infinite ease-in-out;
+        }
+        .ball2{
+            position: absolute;
+            margin-top: 79px;
+            margin-left: 79px;
+            mix-blend-mode: difference;            
+            animation: xAxisBall 4.5s infinite ease-in-out ;
+        }
+        .ball2::after{
+            content: '';
+            display: block;
+            width: 42px;
+            height: 42px;
+            border-radius: 100%;
+            background-color: #0000ff;
+            animation: yAxisBall 4.8s infinite ease-in-out;
+        }
+        .ball3{
+            position: absolute;
+            margin-top: 79px;
+            margin-left: 79px;
+            mix-blend-mode: difference;            
+            animation: xAxisBall 2.5s infinite ease-in-out ;
+        }
+        .ball3::after{
+            content: '';
+            display: block;
+            width: 42px;
+            height: 42px;
+            border-radius: 100%;
+            background-color: #0000ff;
+            animation: yAxisBall 2.8s infinite ease-in-out;
+        }
+	</style>
+</head>
+<body>
+<div class="background"></div>
+<div class = "square"></div>
+<div class="ball"></div>
+<div class="ball2"></div>
+<div class="ball3"></div>
+
+
+
+
+</body>
+</html>
