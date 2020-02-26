@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <title>CSSStuff</title>
     
@@ -35,9 +37,33 @@
             background-color: #ffffff;
             transition: all 2s ease-in-out;
         }
+        .squareInner {
+            position: absolute;
+            margin-top: 225px;
+            margin-left: 225px;
+            width: 50px;
+            height: 50px;
+            mix-blend-mode: difference;
+            z-index: 100;
+            background-color: firebrick;
+        }
         
 
         /* keyframes */
+        @keyframes rounder {
+            42%{
+                border-radius: 100%;
+                background-color: hotpink;
+                width: 400px;
+                height: 400px;
+                margin-top: 50px;
+                margin-left: 50px;
+                transform: rotate(90deg);
+            }
+            100%{
+                transform: rotate(180deg);
+            }
+        }
         @keyframes invertColorSquare {
             0% {
                 background-color: #000000;
@@ -49,6 +75,9 @@
             }
             42%{
                 border-radius: 0%;
+            }
+            60%{
+                border-radius: 50%;
             }
             80%{
                 transform: rotate(360deg);
@@ -81,13 +110,15 @@
             }
         }
 
+        .borderRadiusChange{
+            animation: rounder 5s;
+        }
         .square{
             animation: invertColorSquare 2s cubic-bezier(1,.22,.01,.76) infinite alternate;
         }
         .background{
             animation: invertColorBackground 2s cubic-bezier(.97,-0.7,.02,1.54) infinite alternate;
         }
-
          .ball{
             position: absolute;
             margin-top: 79px;
@@ -98,8 +129,8 @@
         .ball::after{
             content: '';
             display: block;
-            width: 42px;
-            height: 42px;
+            width: 82px;
+            height: 82px;
             border-radius: 100%;
             background-color: #0000ff;
             animation: yAxisBall 3.8s infinite ease-in-out;
@@ -114,10 +145,10 @@
         .ball2::after{
             content: '';
             display: block;
-            width: 42px;
-            height: 42px;
+            width: 62px;
+            height: 62px;
             border-radius: 100%;
-            background-color: #0000ff;
+            background-color: #00ffff;
             animation: yAxisBall 4.8s infinite ease-in-out;
         }
         .ball3{
@@ -136,14 +167,48 @@
             background-color: #ff008c;
             animation: yAxisBall 2.8s infinite ease-in-out;
         }
-	</style>
+        p{
+            position: absolute;
+            margin-top: 100px;
+            margin-left: 555px;
+            color: white;
+
+        }
+    </style>
+    <script>
+          /*  $('.ball').css('animation','500px');*/
+        /* JQuerry */
+        $(function(){
+            $(".squareInner")
+                .on("click",function(){
+                    $(this).addClass('borderRadiusChange');
+                })
+                .on("animationend",function(){
+                    $(this).removeClass('borderRadiusChange');
+                });
+        });
+
+        $(document).ready(function(){
+            $("p").hide();
+            $("body").dblclick(function(){
+                $('p').show();
+            });
+            $("p").click(function(){
+                $(this).hide();
+            });
+        });
+       
+    </script>
 </head>
 <body>
 <div class="background"></div>
 <div class = "square"></div>
+<div class = "squareInner"></div>
 <div class="ball"></div>
 <div class="ball2"></div>
 <div class="ball3"></div>
+<p>What the Heck? <br>Chill mal!</p>
+
 
 
 
