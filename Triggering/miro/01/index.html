@@ -14,9 +14,10 @@
 <body>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-  const socket = io();
-  socket.on('animate', (allowPlay) => {
-    console.log('animate: ', allowPlay);
+  const socket = io('/animation');
+
+  socket.on('animate', (val) => {
+    console.log('animate:', val);
   });
   </script>
 </body>

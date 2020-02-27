@@ -5,26 +5,30 @@ const port = 3000;
 
 let clients = new Set();
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket){
-  // console.log('a user connected');
+const nsp = io.of('/animation');
+
+nsp.on('connection', (socket) => {
   clients.add(socket.id);
-  console.log('added ', socket.id);
-  // socket.on('connect', () => { emitConnected(connectCounter++) });
+  console.log('---- added client  ', socket.id);
+
   socket.on('disconnect', () => {
-    console.log('removed ', socket.id);
     clients.delete(socket.id);
+    console.log('---- removed client', socket.id);
   });
 
-  socket.on('animate', () => {
-    // io.sockets.socket(socketId).emit(true);
-  });
-  console.log('clients ', clients);
+  console.log('---- clients:      ', clients);
+
+  const first = clients.values().next().value;
+  nsp.emit('animate', 'everyone');
+  console.log('---- send to all:  ', first);
+  socket.broadcast.to(first).emit('animate', 'private');
+  console.log('---- send to one:  ', socket.broadcast.to(first));
 });
 
-http.listen(port, function(){
+http.listen(port, () => {
   console.log(`listening on *:${port}`);
 });
