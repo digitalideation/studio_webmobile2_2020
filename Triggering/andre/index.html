@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket Animation André Lergier</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="userCount">
+        <span id="userCountDisplay"></span>
+      </div>
+      <div class="user">
+        <span id="userDisplay"></span>
+      </div>
+      <div class="userId">
+        <small><b>User-Id:</b></small><br>
+        <span id="userIdDisplay"></span>
+      </div>
+    </header>
+
+    <div class="background-stripes">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4137.98528 1137.98528">
+        <title>background-muster</title>
+        <defs>
+          <clipPath id="my-clip">
+            <rect x="1119.74264" y="39.74264" width="1920" height="1080" style="fill:none" />
+          </clipPath>
+        </defs>
+
+        <g data-name="Ebene 1" clip-path="url(#my-clip)">
+          <line x1="4133.74264" y1="1133.74264" x2="3004.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4103.74264" y1="1133.74264" x2="2974.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4073.74264" y1="1133.74264" x2="2944.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4043.74264" y1="1133.74264" x2="2914.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4013.74264" y1="1133.74264" x2="2884.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3983.74264" y1="1133.74264" x2="2854.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3953.74264" y1="1133.74264" x2="2824.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3923.74264" y1="1133.74264" x2="2794.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3893.74264" y1="1133.74264" x2="2764.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3863.74264" y1="1133.74264" x2="2734.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3833.74264" y1="1133.74264" x2="2704.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3803.74264" y1="1133.74264" x2="2674.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3773.74264" y1="1133.74264" x2="2644.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3743.74264" y1="1133.74264" x2="2614.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3713.74264" y1="1133.74264" x2="2584.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3683.74264" y1="1133.74264" x2="2554.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3653.74264" y1="1133.74264" x2="2524.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3623.74264" y1="1133.74264" x2="2494.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3593.74264" y1="1133.74264" x2="2464.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3563.74264" y1="1133.74264" x2="2434.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3533.74264" y1="1133.74264" x2="2404.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3503.74264" y1="1133.74264" x2="2374.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3473.74264" y1="1133.74264" x2="2344.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3443.74264" y1="1133.74264" x2="2314.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3413.74264" y1="1133.74264" x2="2284.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3383.74264" y1="1133.74264" x2="2254.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3353.74264" y1="1133.74264" x2="2224.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3323.74264" y1="1133.74264" x2="2194.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3293.74264" y1="1133.74264" x2="2164.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3263.74264" y1="1133.74264" x2="2134.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3233.74264" y1="1133.74264" x2="2104.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3203.74264" y1="1133.74264" x2="2074.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3173.74264" y1="1133.74264" x2="2044.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3143.74264" y1="1133.74264" x2="2014.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3113.74264" y1="1133.74264" x2="1984.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3083.74264" y1="1133.74264" x2="1954.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3053.74264" y1="1133.74264" x2="1924.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3023.74264" y1="1133.74264" x2="1894.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2993.74264" y1="1133.74264" x2="1864.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2963.74264" y1="1133.74264" x2="1834.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2933.74264" y1="1133.74264" x2="1804.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2903.74264" y1="1133.74264" x2="1774.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2873.74264" y1="1133.74264" x2="1744.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2843.74264" y1="1133.74264" x2="1714.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2813.74264" y1="1133.74264" x2="1684.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2783.74264" y1="1133.74264" x2="1654.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2753.74264" y1="1133.74264" x2="1624.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2723.74264" y1="1133.74264" x2="1594.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2693.74264" y1="1133.74264" x2="1564.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2663.74264" y1="1133.74264" x2="1534.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2633.74264" y1="1133.74264" x2="1504.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2603.74264" y1="1133.74264" x2="1474.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2573.74264" y1="1133.74264" x2="1444.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2543.74264" y1="1133.74264" x2="1414.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2513.74264" y1="1133.74264" x2="1384.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2483.74264" y1="1133.74264" x2="1354.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2453.74264" y1="1133.74264" x2="1324.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2423.74264" y1="1133.74264" x2="1294.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2393.74264" y1="1133.74264" x2="1264.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2363.74264" y1="1133.74264" x2="1234.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2333.74264" y1="1133.74264" x2="1204.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2303.74264" y1="1133.74264" x2="1174.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2273.74264" y1="1133.74264" x2="1144.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2243.74264" y1="1133.74264" x2="1114.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2213.74264" y1="1133.74264" x2="1084.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2183.74264" y1="1133.74264" x2="1054.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2153.74264" y1="1133.74264" x2="1024.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2123.74264" y1="1133.74264" x2="994.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2093.74264" y1="1133.74264" x2="964.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2063.74264" y1="1133.74264" x2="934.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2033.74264" y1="1133.74264" x2="904.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2003.74264" y1="1133.74264" x2="874.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1973.74264" y1="1133.74264" x2="844.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1943.74264" y1="1133.74264" x2="814.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1913.74264" y1="1133.74264" x2="784.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1883.74264" y1="1133.74264" x2="754.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1853.74264" y1="1133.74264" x2="724.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1823.74264" y1="1133.74264" x2="694.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1793.74264" y1="1133.74264" x2="664.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1763.74264" y1="1133.74264" x2="634.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1733.74264" y1="1133.74264" x2="604.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1703.74264" y1="1133.74264" x2="574.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1673.74264" y1="1133.74264" x2="544.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1643.74264" y1="1133.74264" x2="514.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1613.74264" y1="1133.74264" x2="484.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1583.74264" y1="1133.74264" x2="454.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1553.74264" y1="1133.74264" x2="424.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1523.74264" y1="1133.74264" x2="394.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1493.74264" y1="1133.74264" x2="364.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1463.74264" y1="1133.74264" x2="334.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1433.74264" y1="1133.74264" x2="304.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1403.74264" y1="1133.74264" x2="274.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1373.74264" y1="1133.74264" x2="244.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1343.74264" y1="1133.74264" x2="214.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1313.74264" y1="1133.74264" x2="184.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1283.74264" y1="1133.74264" x2="154.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1253.74264" y1="1133.74264" x2="124.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1223.74264" y1="1133.74264" x2="94.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1193.74264" y1="1133.74264" x2="64.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1163.74264" y1="1133.74264" x2="34.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1133.74264" y1="1133.74264" x2="4.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="stripes">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4137.98528 1137.98528">
+        <title>background-muster</title>
+        <defs>
+          <clipPath id="my-clip2">
+            <rect x="1119.74264" y="39.74264" width="1920" height="1080" style="fill:none" />
+          </clipPath>
+        </defs>
+
+        <g data-name="Ebene 1" clip-path="url(#my-clip2)">
+          <line x1="4133.74264" y1="1133.74264" x2="3004.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4103.74264" y1="1133.74264" x2="2974.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4073.74264" y1="1133.74264" x2="2944.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4043.74264" y1="1133.74264" x2="2914.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="4013.74264" y1="1133.74264" x2="2884.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3983.74264" y1="1133.74264" x2="2854.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3953.74264" y1="1133.74264" x2="2824.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3923.74264" y1="1133.74264" x2="2794.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3893.74264" y1="1133.74264" x2="2764.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3863.74264" y1="1133.74264" x2="2734.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3833.74264" y1="1133.74264" x2="2704.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3803.74264" y1="1133.74264" x2="2674.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3773.74264" y1="1133.74264" x2="2644.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3743.74264" y1="1133.74264" x2="2614.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3713.74264" y1="1133.74264" x2="2584.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3683.74264" y1="1133.74264" x2="2554.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3653.74264" y1="1133.74264" x2="2524.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3623.74264" y1="1133.74264" x2="2494.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3593.74264" y1="1133.74264" x2="2464.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3563.74264" y1="1133.74264" x2="2434.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3533.74264" y1="1133.74264" x2="2404.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3503.74264" y1="1133.74264" x2="2374.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3473.74264" y1="1133.74264" x2="2344.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3443.74264" y1="1133.74264" x2="2314.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3413.74264" y1="1133.74264" x2="2284.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3383.74264" y1="1133.74264" x2="2254.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3353.74264" y1="1133.74264" x2="2224.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3323.74264" y1="1133.74264" x2="2194.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3293.74264" y1="1133.74264" x2="2164.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3263.74264" y1="1133.74264" x2="2134.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3233.74264" y1="1133.74264" x2="2104.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3203.74264" y1="1133.74264" x2="2074.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3173.74264" y1="1133.74264" x2="2044.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3143.74264" y1="1133.74264" x2="2014.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3113.74264" y1="1133.74264" x2="1984.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3083.74264" y1="1133.74264" x2="1954.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3053.74264" y1="1133.74264" x2="1924.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="3023.74264" y1="1133.74264" x2="1894.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2993.74264" y1="1133.74264" x2="1864.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2963.74264" y1="1133.74264" x2="1834.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2933.74264" y1="1133.74264" x2="1804.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2903.74264" y1="1133.74264" x2="1774.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2873.74264" y1="1133.74264" x2="1744.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2843.74264" y1="1133.74264" x2="1714.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2813.74264" y1="1133.74264" x2="1684.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2783.74264" y1="1133.74264" x2="1654.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2753.74264" y1="1133.74264" x2="1624.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2723.74264" y1="1133.74264" x2="1594.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2693.74264" y1="1133.74264" x2="1564.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2663.74264" y1="1133.74264" x2="1534.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2633.74264" y1="1133.74264" x2="1504.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2603.74264" y1="1133.74264" x2="1474.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2573.74264" y1="1133.74264" x2="1444.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2543.74264" y1="1133.74264" x2="1414.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2513.74264" y1="1133.74264" x2="1384.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2483.74264" y1="1133.74264" x2="1354.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2453.74264" y1="1133.74264" x2="1324.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2423.74264" y1="1133.74264" x2="1294.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2393.74264" y1="1133.74264" x2="1264.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2363.74264" y1="1133.74264" x2="1234.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2333.74264" y1="1133.74264" x2="1204.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2303.74264" y1="1133.74264" x2="1174.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2273.74264" y1="1133.74264" x2="1144.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2243.74264" y1="1133.74264" x2="1114.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2213.74264" y1="1133.74264" x2="1084.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2183.74264" y1="1133.74264" x2="1054.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2153.74264" y1="1133.74264" x2="1024.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2123.74264" y1="1133.74264" x2="994.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2093.74264" y1="1133.74264" x2="964.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2063.74264" y1="1133.74264" x2="934.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2033.74264" y1="1133.74264" x2="904.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="2003.74264" y1="1133.74264" x2="874.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1973.74264" y1="1133.74264" x2="844.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1943.74264" y1="1133.74264" x2="814.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1913.74264" y1="1133.74264" x2="784.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1883.74264" y1="1133.74264" x2="754.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1853.74264" y1="1133.74264" x2="724.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1823.74264" y1="1133.74264" x2="694.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1793.74264" y1="1133.74264" x2="664.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1763.74264" y1="1133.74264" x2="634.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1733.74264" y1="1133.74264" x2="604.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1703.74264" y1="1133.74264" x2="574.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1673.74264" y1="1133.74264" x2="544.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1643.74264" y1="1133.74264" x2="514.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1613.74264" y1="1133.74264" x2="484.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1583.74264" y1="1133.74264" x2="454.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1553.74264" y1="1133.74264" x2="424.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1523.74264" y1="1133.74264" x2="394.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1493.74264" y1="1133.74264" x2="364.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1463.74264" y1="1133.74264" x2="334.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1433.74264" y1="1133.74264" x2="304.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1403.74264" y1="1133.74264" x2="274.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1373.74264" y1="1133.74264" x2="244.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1343.74264" y1="1133.74264" x2="214.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1313.74264" y1="1133.74264" x2="184.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1283.74264" y1="1133.74264" x2="154.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1253.74264" y1="1133.74264" x2="124.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1223.74264" y1="1133.74264" x2="94.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1193.74264" y1="1133.74264" x2="64.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1163.74264" y1="1133.74264" x2="34.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+          <line x1="1133.74264" y1="1133.74264" x2="4.24264" y2="4.24264"
+            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:12px" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="bubbles"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        let socket = io();
+        let localClientsCount = 0;
+        let clientId = 0;
+        let clientNumberId = 0;
+        let localRegistredUsers = new Map();
+
+        function addUser(id, numberId, color) {
+          userNode = document.createElement('div');
+          userNode.id = id;
+          userNode.classList.add('user');
+          userNode.innerHTML = numberId;
+          userNode.style.backgroundColor = color;
+          document.querySelector('.bubbles').appendChild(userNode);
+
+          localRegistredUsers.set(numberId, id);
+        }
+
+        function deleteUser(id, numberId) {
+          var elem = document.querySelector(`#${id}`);
+          elem.remove();
+
+          localRegistredUsers.delete(numberId);
+        }
+
+        /**
+         * event listeners
+         */
+        // update client id on page
+        socket.on('clientData', (data) => {
+          clientId = data.socketId;
+          clientNumberId = data.numberId;
+          document.querySelector('#userIdDisplay').innerHTML = data.socketId;
+          document.querySelector('#userDisplay').innerHTML = data.numberId;
+          document.querySelector('.user').style.backgroundColor = data.color;
+        });
+
+        socket.on('userConnectUpdate', function(dataToSendToAll) {
+
+          localClientsCount++;
+
+          // add new user to dom and localRegistredUsers
+          addUser(dataToSendToAll.userId, dataToSendToAll.numberId, dataToSendToAll.color);
+
+          // add users, if not first client
+          // reconvert Array to map
+          let connectedUsers = new Map(JSON.parse(dataToSendToAll.connectedUsersArray));
+          console.log(connectedUsers);
+
+          console.log('--------');
+          console.log(clientId);
+          console.log('--------');
+
+          if (dataToSendToAll.clientsCount > 1) {
+            console.log('add previous users');
+
+            for (let [key, value] of connectedUsers) {
+              if(!localRegistredUsers.has(key)){
+                addUser(value.socketId, key, value.color);
+                localClientsCount++;
+                console.log(`- added ${key}`);
+              }
+            }
+          }
+        });
+
+        socket.on('userDisconnectUpdate', function(deletedUser) {
+          localClientsCount--;
+          deleteUser(deletedUser.userId, deletedUser.deletedNumberId);
+        });
+
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+        socket.on('chat information', function(msg){
+          $('#messages').append($('<li class="info">').text(msg));
+        });
+      });
+    </script>
+  </body>
+</html>
