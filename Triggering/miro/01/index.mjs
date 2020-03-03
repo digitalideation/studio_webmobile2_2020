@@ -13,6 +13,8 @@ const wss = new WebSocket.Server({ server });
 let clients = new Map();
 let clientPosition = []; // stores client window position settings
 
+app.use(express.static('modules'))
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
@@ -28,13 +30,16 @@ wss.on('connection', (ws, req) => {
 
   ws.on('message', (data) => {
     // log the received message and send it back to the client
-    console.log('received: %s', data);
+    // console.log('received: %s', data);
     const msg = JSON.parse(data);
     if (!msg && !msg.type) return;
 
     switch(msg.type) {
       case 'request-position-change':
         updateClientPosition(id, msg.data.clientPosition);
+        break;
+      case 'animation-exit':
+        animationHandoff(id, msg.data);
         break;
       case 'log':
         console.log('Message from client: ', event.data);
@@ -77,6 +82,15 @@ function updateClientPosition(id, position) {
   clientPosition[indexB] = temp;
 
   broadcastClientCount(clients.size);
+}
+
+function animationHandoff(id, data) {
+  const originIndex = clientPosition.indexOf(id);
+  const next = data.direction === 'right' ? originIndex + 1 : originIndex - 1;
+  const targetIndex = next < 0 ? clientPosition.length - 1 : next % clientPosition.length;
+
+  const target = clients.get(clientPosition[targetIndex]);
+  if (target) target.send(message('animation-enter', data));
 }
 
 // connection helpers

@@ -6,25 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sketch 01</title>
   <style>
+  body,
+  html {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
   body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",sans-serif;
   }
 
   .panel {
     border-radius: .5rem;
     padding: 1rem;
-    background: #f9f9f9;
+    background: rgba(249, 249, 249, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     position: fixed;
     bottom: 2.5rem;
     left: 2.5rem;
     right: 2.5rem;
     display: flex;
     align-items: center;
+    user-select: none;
   }
 
   .panel--cell + .panel--cell {
     margin-left: 1rem;
     padding-left: 1rem;
+    flex-grow: 1;
+    min-width: 0;
   }
   .panel--cell + .panel--cell::before {
     content: '';
@@ -33,10 +45,38 @@
     top: 0;
     height: 100%;
     width: 1px;
-    background-color: #d9d9d9;
+    background-color: rgba(195, 202, 205, 0.6);
   }
-  .panel--cell label {
-    display: none;
+
+  #client-position {
+    display: flex;
+  }
+  #client-position input {
+    opacity: 0;
+    position: absolute;
+  }
+  #client-position input:checked + label{
+    background-color: rgba(6, 32, 45, 0.6);
+  }
+  #client-position label {
+    height: 2rem;
+    max-width: 4rem;
+    display: block;
+    background-color: rgba(195, 202, 205, 0.6);
+    color: transparent;
+    min-width: 0;
+  }
+  #client-position label:not(:first-of-type) {
+    border-left: 1px solid white;
+  }
+  #client-position label:first-of-type {
+    border-radius: .4rem 0 0 .4rem;
+  }
+  #client-position label:last-of-type {
+    border-radius: 0 .4rem .4rem 0;
+  }
+  #client-position label:first-of-type:last-of-type {
+    border-radius: .4rem;
   }
 
   #client-count {
@@ -47,9 +87,18 @@
     text-align: center;
     font-size: 0.8em;
   }
+  #canvas {
+    width: 100%;
+    height: 100%;
+  }
+  canvas {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
   </style>
 </head>
 <body>
+  <div id="canvas"></div>
   <div class="panel">
     <div class="panel--cell">
       <span id="client-count">0</span>
@@ -66,8 +115,12 @@
       </form>
     </div>
   </div>
-  <script>
+  <script type="module">
+  import Animation from './animation.mjs';
+
   const client = new WebSocket(`ws://${window.location.host}/websocket`);
+
+  const anim = new Animation(document.getElementById('canvas'), exitCallback);
 
   function onMessage(event) {
     const msg = JSON.parse(event.data);
@@ -79,11 +132,14 @@
         break;
       case 'update-client-position':
         updateClientPosition(msg.data.clientPosition);
+        break;
+      case 'animation-enter':
+        anim.enter(msg.data);
+        break;
       case 'log':
         console.log('Message from server: ', event.data);
         break;
     }
-
   }
 
   function sendMessage(type, data) {
@@ -112,15 +168,19 @@
 
     for (let i = 0; i < clientCount; i++) {
       const input = document.createElement('input');
+      const label = document.createElement('label');
       input.type = 'radio';
       input.name = 'client-position';
       input.id = `client-position-${i}`;
       input.value = i;
+      label.htmlFor = input.id;
+      label.innerText = `Client position ${i}`;
 
       if (clientPosition === i) input.checked = true;
       // <label for="client-position-${i}">Client position ${i}</label>
       input.addEventListener('change', onPositionChange);
       fragment.appendChild(input);
+      fragment.appendChild(label);
     }
     panelClientPosition.innerHTML = '';
     panelClientPosition.appendChild(fragment);
@@ -131,6 +191,10 @@
     sendMessage('request-position-change', { clientPosition: event.srcElement.value });
     toggleFormReadOnly(true);
     console.log('syncing…');
+  }
+
+  function exitCallback(data) {
+    sendMessage('animation-exit', data);
   }
 
   function toggleFormReadOnly(readOnlyState) {
