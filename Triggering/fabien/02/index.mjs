@@ -18,6 +18,8 @@ const server = https.createServer(credentials, app);
 
 const io = socketIO(server);
 
+app.use(express.static('modules'))
+
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });

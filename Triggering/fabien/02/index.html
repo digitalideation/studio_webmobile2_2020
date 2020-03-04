@@ -12,11 +12,10 @@
 
 <body>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    $(function () {
-      const socket = io();
-    });
+  <script type="module">
+    import animate from './animation.mjs';
+    const socket = io();
+    animate();
   </script>
 </body>
 
