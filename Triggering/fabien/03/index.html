@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Marble Labyrinth</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    main {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .btnWrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      padding: 10px;
+      margin: 20px 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      outline: none;
+      color: black;
+      border: 1px solid black;
+      background-color: white;
+    }
+
+    button:disabled {
+      background-color: gray;
+      cursor: no-drop;
+    }
+  </style>
+</head>
+
+<body>
+  <main id="canvasWrapper">
+    <section class="btnWrapper">
+      <button id="screen">Screen</button>
+      <button id="controller">Controller</button>
+    </section>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module">
+    import Scene from './scene.mjs';
+    import sensorEvent from './controller.mjs';
+
+    const scene = new Scene(document.getElementById('canvasWrapper'));
+
+    const screen = document.getElementById('screen');
+    const controller = document.getElementById('controller');
+
+    const socket = io();
+
+    let hasRole = false;
+
+    const registrate = (event) => {
+      const role = event.srcElement.id;
+      socket.emit('clientRegistration', role);
+      screen.disabled = true;
+      controller.disabled = true;
+    };
+
+
+    const disabled = (role, bool) => {
+      switch (role) {
+        case 'screen':
+          screen.disabled = bool;
+          break;
+        case 'controller':
+          controller.disabled = bool;
+          break;
+        default:
+          console.log('Role not defined');
+      }
+    };
+
+    // send registration request
+    screen.addEventListener('click', registrate);
+    controller.addEventListener('click', registrate);
+
+    // on successfull registration
+    socket.on('approval', (role) => {
+      hasRole = true;
+    });
+
+    // if role is taken
+    socket.on('disable', (role) => {
+      disabled(role, true);
+    });
+
+    // if client logs out
+    socket.on('enable', (role) => {
+      if (!hasRole) {
+        disabled(role, false);
+      }
+    });
+  </script>
+</body>
+
+</html>

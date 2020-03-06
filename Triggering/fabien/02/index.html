@@ -4,18 +4,46 @@
 <head>
   <title>DeviceMotionEvent</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
+    }
+    main#background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: white;
+    }
+    button {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid black;
+      outline: none;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+      font-size: 2rem;
+      background-color: white;
     }
   </style>
 </head>
 
 <body>
+  <main id="background"><button id="trigger">Trigger</button></main>
   <script src="/socket.io/socket.io.js"></script>
   <script type="module">
     import animate from './animation.mjs';
     const socket = io();
-    animate();
+    const button = document.getElementById('trigger');
+    button.onclick = () => {
+      animate();
+    }
   </script>
 </body>
 
