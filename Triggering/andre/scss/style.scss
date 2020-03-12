@@ -1,0 +1,119 @@
+body{
+  margin:0;
+  padding:0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+header{
+  position: fixed;
+  top:0;
+  right:0;
+  margin: 15px 15px 0 0;
+  z-index: 1000;
+  display: flex;
+
+  .userId{  
+    background:white;
+    border-radius:5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding:8px 12px;
+  }
+
+  .user{
+    padding: 10px;
+    border-radius:50%;
+    line-height:1;
+    margin-right:15px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.background-stripes{
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+
+  svg{
+    transform: scale(3);
+    transform: scale(4);
+    transform-origin: 40% 20%;
+  
+    line{
+      stroke:#ccc !important;
+      animation-name: animate-background;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease;
+      animation-fill-mode: both;
+    
+      @for $i from 1 through 100 {
+          // :nth-child(1-100) 
+          &:nth-child(#{$i}) {
+            
+            // Delay the animation. Delay increases as items loop.
+            animation-delay: $i * (1s / 18);
+          }
+      }
+    }
+  }
+}
+
+.stripes{
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  transform: translate3d(-50%, -50%,0);
+  overflow: hidden;
+
+  svg{
+    transform: scale(5.5) rotate(270deg);
+  }
+}
+
+.bubbles{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .user{
+    background: #3ed678;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding:8px;
+    font-size:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@keyframes animate-background{
+  from{
+    stroke-width:20px;
+  }
+  to{
+    stroke-width:5px;
+  }
+}
+
+@keyframes background-transforms{
+  from{
+    transform: scale(4) rotate(0deg);
+  }
+  from{
+    transform: scale(4) rotate(360deg);
+  }
+}
