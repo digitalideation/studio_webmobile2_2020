@@ -4,8 +4,11 @@
  */
 var express = require('express');
 var app= express();
+var socket = require('socket.io');
+var path = require('path');
+
 //var server = app.listen(3000);
-var server = app.listen(80,"0.0.0.0");
+var server = app.listen(process.env.PORT || 80);
 
 
 var socketIds=[];
@@ -44,11 +47,10 @@ var NewoffsetTop=400;
 
 //socket Angaben
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")));
 
 console.log("my server is running");
 
-var socket = require('socket.io');
 var io = socket(server);
 io.sockets.on('connection', newConnection);
 

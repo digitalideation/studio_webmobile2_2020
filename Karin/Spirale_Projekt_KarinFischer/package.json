@@ -1,0 +1,15 @@
+{
+  "name": "spirale-projekt",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node Server_Spirale_Karin.js"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

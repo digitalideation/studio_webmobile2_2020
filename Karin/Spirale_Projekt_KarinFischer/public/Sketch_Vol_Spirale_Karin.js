@@ -20,7 +20,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(40);
     //socket=io.connect("http://localhost:3000/");
-    socket=io.connect("http://10.155.121.62.:80/");
+    socket=io.connect();
     colorMode(HSB,width,height,100);
     amp =new p5.Amplitude();
     mic= new p5.AudioIn();
