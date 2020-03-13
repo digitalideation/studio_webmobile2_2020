@@ -14,6 +14,7 @@ class Vehicle {
         this.colorNoise = 0.1;
         this.totalWidth = w;
         this.maxHeight = h;
+        this.resetAcceleration = new Victor(0,0);
         
         
     }
@@ -29,10 +30,11 @@ class Vehicle {
         //what is the vector at that spot in the flowfield
         let desired = flow.lookup(this.position);
         //scale it up by maxspeed
-        desired.multiply(this.maxspeed);
+        desired.multiplyScalar(this.maxspeed);
         //steering is desired minus velocity
         let steer = desired.subtract(this.velocity);
-        steer.limit(this.maxforce); //limit to maximum steering force
+        steer.limit(this.maxforce,0.1); //limit to maximum steering force
+        //steer.limit(4,0.75);
         this.applyForce(steer);
     }
 
@@ -45,10 +47,11 @@ class Vehicle {
         //update velocity
         this.velocity.add(this.acceleration);
         //limit speed
-        this.velocity.limit(this.maxspeed);
+        //this.velocity.limit(this.maxspeed);
+        this.velocity.limit(4,0.75);
         this.position.add(this.velocity);
         //reset acceleration to 0
-        this.acceleration.multiply(0);
+        this.acceleration.multiply(this.resetAcceleration);
         this.xOffNoise += 0.02;
         this.colorNoise += 0.01;
     }

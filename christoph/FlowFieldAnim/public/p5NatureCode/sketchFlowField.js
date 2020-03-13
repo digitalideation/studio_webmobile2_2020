@@ -17,7 +17,7 @@ function setup(){
     socket.emit('get',settings); //einmalige Anmeldung
 
     socket.on('get',getSettings);
-    //socket.on('update',updateSettings);
+    socket.on('update',updateSettings);
 
 
     //new flowfield witch resolution of 20
@@ -33,6 +33,11 @@ function getSettings(data){
     settings=data;
 }
 
+function updateSettings(data){
+    settings.vehicles = data;
+    console.log(settings);
+}
+
 //let colorNoise = 0.1;
 
 function draw(){
@@ -42,7 +47,7 @@ function draw(){
     if (debug == true) {
         displayFlow();
     }
-    //displayVehicles();
+    displayVehicles();
 
     // for (let i = 0; i < settings.numVehicle; i++){
     //     vehicles[i].follow(settings.flowfield);
@@ -68,15 +73,15 @@ function displayFlow(){
 
 //renders a vector object 'v' as an arrow and a location 'x,y'
 function drawVectorFlow(v,x,y,scayl){
-    v=createVector(v.x,v.y); 
+    let vec = createVector(v.x,v.y); 
     push();
     //translate location to render Vector
     translate(x,y);
     stroke(0,100);
     //call vector heading function to get direction (pointing to right is heading of 0)
-    rotate(v.heading());
+    rotate(vec.heading());
     //calculate length of vector & scale it
-    let len = v.mag() * scayl;
+    let len = vec.mag() * scayl;
     //draw 
     stroke(0);
     strokeWeight(2);
@@ -85,13 +90,18 @@ function drawVectorFlow(v,x,y,scayl){
 }
 
 function displayVehicles(){
+    console.log(settings);
+    for (let i = 0; i< settings.vehicles.length; i++){
     //draw triangle rotated in direction of velocity
-    let theta = this.velocity.heading() + PI / 2;
+   //let veloVect = createVector(settings.vVelocity.x,settings.vVelocity.y);
+   
+ 
+   let theta = settings.vehicles.velocity.heading() + PI / 2;
     
     push();
     colorMode(HSB);
     //let b = map(noise(this.colorNoise/2),0,1,0,360);
-    translate(settings.vPosition.x, settings.vPosition.y);
+    translate(settings.vehicles[i].position.x, settings.vehicles[i].position.y);
     rotate(theta);
     fill(0,100,0);
     noStroke();
@@ -108,6 +118,7 @@ function displayVehicles(){
     // bezier(0,-this.r*2,0,0,map(noise(this.xOffNoise),0,1,-this.ellipseSize*2,this.ellipseSize*2),0,0,this.ellipseSize*2);
     //bezier(0,-this.r*2,0,this.r*2,0,this.r*2,map(noise(this.xOffNoise),0,1,-this.r*4,this.r*4),this.r*6);
     pop();
+    }
 }
 
 function keyPressed(){

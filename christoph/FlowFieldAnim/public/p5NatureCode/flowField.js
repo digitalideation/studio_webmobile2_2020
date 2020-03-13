@@ -56,15 +56,18 @@ class FlowField {
         return val > max ? max : val < min ? min : val;
     }
     lookup(lookup) {
+        console.log(lookup)
         let column = Math.floor(this.constrainNumber(lookup.x / this.resolution, 0, this.cols - 1));
         let row = Math.floor(this.constrainNumber(lookup.y / this.resolution, 0, this.rows - 1));
 
-        console.log(this.field);
-        console.log('row' + row);
-        console.log('col' + column);
-        console.log(this.field[column][row]);
+        // console.log(this.field);
+        // console.log('row' + row);
+        // console.log('col' + column);
+        // console.log(this.field[column][row]);
+
         //return this.field[column][row].copy();
         return new Victor(this.field[column][row].x,this.field[column][row].y);
+        //return this.field[column][row].clone();
         
     }
 

@@ -38,6 +38,12 @@ function make2Darray(n){
     return array;
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
 
 app.use(express.static('public'));
 
@@ -73,8 +79,10 @@ function newConnection(socket){
             field=make2Darray(cols);
             //console.log(totalW);
             flowField = new FlowField(resolution,cols,rows,field);
-            for (let i = 0; i<vehicleNumber; i++){
-                vehicles.push(new Vehicle(50,60,Math.random(0.2,4),Math.random(0.1,1),totalW,maxH))
+            for (let i = 0; i<1; i++){
+                //vehicles.push(new Vehicle(Math.random(totalW),Math.random(maxH),Math.random(0.2,4),Math.random(0.1,1),totalW,maxH))
+                vehicles.push(new Vehicle(getRandomInt(0,totalW),getRandomInt(0,maxH),2,0.5,totalW,maxH))
+
             }
             //console.log(flowField.field)
         }
@@ -90,7 +98,8 @@ function newConnection(socket){
             rows: flowField.rows,
             field: flowField.field,
             flowfield: flowField,
-            vPosition: vehicles.position
+            vehicles: vehicles
+
         }
 
 
