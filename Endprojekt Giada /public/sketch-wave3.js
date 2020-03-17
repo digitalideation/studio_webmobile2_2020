@@ -49,12 +49,14 @@ function newCircle(data) {
     circleClicked = 1;
 
     outDiam = 0;
+
+    let mywave = new Wave(data.x, data.y);
+    waves.push(mywave);
 }
 
 //function touchStarted() {
 function mouseClicked() {
-    let mywave = new Wave(mouseX, mouseY);
-    waves.push(mywave);
+
     song.play();
 
     var data = {
@@ -65,10 +67,10 @@ function mouseClicked() {
 }
 
 function draw() {
-
+    background(0, 0, 0, 100);
     for (const wav of waves) wav.display();
 
-    if (circleClicked == 1) {
+   /* if (circleClicked == 1) {
         // let gradient = map(mouseX + mouseY, 240, width + height, 240, 80);
         //background(0, 40, gradient);
         background(0, 0, 0, 100);
@@ -91,7 +93,7 @@ function draw() {
         }
 
         pop();
-    }
+    }*/
 
 }
 
