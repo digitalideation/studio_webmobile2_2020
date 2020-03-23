@@ -8,6 +8,7 @@ let opacityCol;
 let lineWeight;
 let waves = [];
 let num_waves; //no waves on the canvas at first
+let gradientBg;
 
 let settings = {};
 
@@ -42,8 +43,7 @@ function updateSettings(data) {
 }
 
 function newCircle(data) {
-
-    // console.log(data);
+    //console.log(data);
     clickPosX = data.x;
     clickPosY = data.y;
     circleClicked = 1;
@@ -67,56 +67,38 @@ function mouseClicked() {
 }
 
 function draw() {
-    background(0, 0, 0, 100);
+    //gradientBg = map(mouseX + mouseY, 240, width + height, 240, 80);
+    background(0);
     for (const wav of waves) wav.display();
-
-   /* if (circleClicked == 1) {
-        // let gradient = map(mouseX + mouseY, 240, width + height, 240, 80);
-        //background(0, 40, gradient);
-        background(0, 0, 0, 100);
-
-        push();
-        translate(-settings.offsetbeginX, 0);
-
-        for (let count = 0; count < 3; count++) {
-            let diam = outDiam - 50 * count;
-            if (diam > 0) {
-                noFill();
-                //opacityCol = map(diam, 0, width, 255, 0);
-                lineWeight = map(diam, 0, width, 1, 20)
-                //stroke(255, 255, 255, opacityCol);
-                stroke(255, 0, 0);
-                strokeWeight(lineWeight);
-                ellipse(clickPosX, clickPosY, diam);
-            }
-            outDiam = outDiam + 2;
-        }
-
-        pop();
-    }*/
-
 }
 
 class Wave {
-    constructor(posX, posY) {
-        this.x = posX;
-        this.y = posY;
+    constructor(clickPosX, clickPosY) {
+        this.x = clickPosX;
+        this.y = clickPosY;
         this.outDiam = 0;
     }
 
     display() {
-        for (let count = 0; count < 4; count++) {
-            let diam = this.outDiam - 60 * count;
-            if (diam > 0) {
-                noFill();
-                opacityCol = map(diam, 0, width, 255, 0);
-                lineWeight = map(diam, 0, width, 1, 20)
-                stroke(255, 255, 255, opacityCol);
-                strokeWeight(lineWeight);
-                ellipse(this.x, this.y, diam);
-                //ellipse(this.x, this.y, 30);
+
+        if (circleClicked) {
+
+            push();
+            translate(-settings.offsetbeginX, 0);
+
+            for (let count = 0; count < 4; count++) {
+                let diam = this.outDiam - 50 * count;
+                if (diam > 0) {
+                    noFill();
+                    opacityCol = map(diam, 0, width, 255, 0);
+                    lineWeight = map(diam, 0, width, 1, 20)
+                    stroke(255, 255, 255, opacityCol);
+                    strokeWeight(lineWeight);
+                    ellipse(this.x, this.y, diam);
+                }
             }
+            this.outDiam = this.outDiam + 7;
+            pop();
         }
-        this.outDiam = this.outDiam + 10;
     }
 }
