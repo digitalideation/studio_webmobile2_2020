@@ -3,12 +3,13 @@ var outDiam = 0;
 let circleClicked = 0;
 let clickPosX, clickPosY;
 let offsetbeginX;
-var song;
+var sound;
 let opacityCol;
 let lineWeight;
 let waves = [];
 let num_waves; //no waves on the canvas at first
-let gradientBg;
+let gradientBlue;
+let gradientGreen;
 
 let settings = {};
 
@@ -16,16 +17,14 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
 
     settings.w = width;
-    song = loadSound("water effect echo.mp3", loaded);
+    sound = loadSound("water effect echo.mp3", loaded);
 
     socket = io.connect("http://localhost:3000/");
-    //socket = io.connect("172.20.10.2:3000/");
 
     socket.on("click", newCircle);
 
     socket.emit("get", settings);
     socket.on("get", getSettings);
-    socket.on("update", updateSettings);
 
     background(0);
 }
@@ -37,10 +36,6 @@ function getSettings(data) {
     console.log(settings);
 }
 
-function updateSettings(data) {
-    // settings.xvalue = data;
-    //console.log(settings.xvalue);
-}
 
 function newCircle(data) {
     //console.log(data);
@@ -54,10 +49,10 @@ function newCircle(data) {
     waves.push(mywave);
 }
 
-//function touchStarted() {
-function mouseClicked() {
+function touchStarted() {
+    //function mouseClicked() {
 
-    song.play();
+    sound.play();
 
     var data = {
         x: mouseX + settings.offsetbeginX,
@@ -67,9 +62,20 @@ function mouseClicked() {
 }
 
 function draw() {
-    //gradientBg = map(mouseX + mouseY, 240, width + height, 240, 80);
-    background(0);
+
+    gradientBlue = map(clickPosY, 120, windowHeight, 120, 30);
+    gradientGreen = map(clickPosY, 80, windowHeight, 80, 0);
+
+    background(10, gradientGreen, gradientBlue, 100);
+
+    let volumeSound = map(mouseX, 0.1, width, 0.1, 1);
+    sound.amp(volumeSound);
+
+    let speedSound = map(mouseY, 2, height, 2, 0.5);
+    sound.rate(speedSound);
+
     for (const wav of waves) wav.display();
+
 }
 
 class Wave {
@@ -86,18 +92,18 @@ class Wave {
             push();
             translate(-settings.offsetbeginX, 0);
 
-            for (let count = 0; count < 4; count++) {
-                let diam = this.outDiam - 50 * count;
+            for (let count = 0; count < 5; count++) {
+                let diam = this.outDiam - 80 * count;
                 if (diam > 0) {
                     noFill();
-                    opacityCol = map(diam, 0, width, 255, 0);
-                    lineWeight = map(diam, 0, width, 1, 20)
+                    opacityCol = map(diam, 0, width * 2, 200, 0);
+                    lineWeight = map(diam, 0, width * 2, 10, 1)
                     stroke(255, 255, 255, opacityCol);
                     strokeWeight(lineWeight);
                     ellipse(this.x, this.y, diam);
                 }
             }
-            this.outDiam = this.outDiam + 7;
+            this.outDiam = this.outDiam + 10;
             pop();
         }
     }
